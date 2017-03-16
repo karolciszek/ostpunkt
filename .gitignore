@@ -1,0 +1,17 @@
+# Databases
+db.sqlite3
+
+# Python non-needed files
+*.pyc
+
+# JetBrains IDE
+.idea/*
+
+# Django settings file
+settings.py
+
+# Migrations
+*/migrations/*
+
+# JS libraries
+jquery*
