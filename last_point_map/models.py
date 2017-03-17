@@ -7,3 +7,9 @@ class Point(models.Model):
     lng = models.FloatField()
     set_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=None)
+
+    def __str__(self):
+        return '[({}, {}) at {} by {}]'.format(self.lat,
+                                               self.lng,
+                                               self.set_at,
+                                               self.author)
