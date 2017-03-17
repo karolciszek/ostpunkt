@@ -11,5 +11,5 @@ class Point(models.Model):
     def __str__(self):
         return '[({}, {}) at {} by {}]'.format(self.lat,
                                                self.lng,
-                                               self.set_at,
+                                               self.set_at.strftime('%H:%M:%S on %Y-%m-%d'),
                                                self.author)
