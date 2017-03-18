@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^', include('registration.backends.simple.urls')),
     url(r'^', include('last_point_map.urls'))
 ]
