@@ -50,3 +50,9 @@ class SubmitPointTestCase(TestCase):
         """User not logged in returns 403"""
         response = self.c.get(reverse(submit_point), {'lat': 34.0, 'lng': 45.3})
         self.assertEqual(response.status_code, 403)
+
+    def test_logged_in(self):
+        """User logged in returns 200"""
+        self.c.force_login(self.u)
+        response = self.c.get(reverse(submit_point), {'lat': 34.0, 'lng': 45.3})
+        self.assertEqual(response.status_code, 200)
