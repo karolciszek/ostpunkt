@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    {% load leaflet_tags %}
+    {% leaflet_js %}
+    {% leaflet_css %}
+    <script src="{% static 'js/pointmap.js' %}"></script>
+</head>
+<body>
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
