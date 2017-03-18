@@ -1,8 +1,8 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
 import json
 from .models import Point
-from .views import get_recent_point
+from .views import get_recent_point, submit_point
 
 User = get_user_model()
 
@@ -34,3 +34,13 @@ class RecentPointTestCase(TestCase):
         response = get_recent_point(None)
         fields = json.loads(response.content.decode('utf-8'))[0]['fields']
         self.assertAlmostEqual(fields['lng'], self.pt.lng)
+
+class SubmitPointTestCase(TestCase):
+    def setUp(self):
+        credentials = {'username': 'test', 'password': 'probowanie'}
+        self.u = User(**credentials)
+        self.u.save()
+        self.c = Client()
+
+    def tearDown(self):
+        self.u.delete()
