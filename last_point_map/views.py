@@ -4,4 +4,4 @@ from .models import Point
 
 # Create your views here.
 def get_recent_point(request):
-    return HttpResponse(Point.objects.latest())
+    return HttpResponse(Point.objects.last())
