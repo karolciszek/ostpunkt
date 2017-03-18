@@ -63,3 +63,24 @@ class SubmitPointTestCase(TestCase):
         data = {'lat': 34.0, 'lng': 45.3}
         response = self.c.get(reverse(submit_point), data)
         self.assertEqual(Point.objects.last().lat, data['lat'])
+
+class MapPageTestCase(TestCase):
+    def setUp(self):
+        credentials = {'username': 'test', 'password': 'probowanie'}
+        self.u = User(**credentials)
+        self.u.save()
+        self.c = Client()
+
+    def tearDown(self):
+        self.u.delete()
+
+    def test_not_logged_in(self):
+        """User not logged in returns 403"""
+        response = self.c.get(reverse(submit_point), {'lat': 34.0, 'lng': 45.3})
+        self.assertEqual(response.status_code, 403)
+
+    def test_logged_in(self):
+        """User logged in returns 200"""
+        self.c.force_login(self.u)
+        response = self.c.get(reverse(submit_point), {'lat': 34.0, 'lng': 45.3})
+        self.assertEqual(response.status_code, 200)
