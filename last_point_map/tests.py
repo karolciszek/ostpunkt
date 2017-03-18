@@ -1,5 +1,6 @@
 from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
+from django.urls import reverse
 import json
 from .models import Point
 from .views import get_recent_point, submit_point
@@ -44,3 +45,8 @@ class SubmitPointTestCase(TestCase):
 
     def tearDown(self):
         self.u.delete()
+
+    def test_not_logged_in(self):
+        """User not logged in returns 403"""
+        response = self.c.get(reverse(submit_point), {'lat': 34.0, 'lng': 45.3})
+        self.assertEqual(response.status_code, 403)
