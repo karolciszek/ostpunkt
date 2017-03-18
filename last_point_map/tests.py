@@ -56,3 +56,10 @@ class SubmitPointTestCase(TestCase):
         self.c.force_login(self.u)
         response = self.c.get(reverse(submit_point), {'lat': 34.0, 'lng': 45.3})
         self.assertEqual(response.status_code, 200)
+
+    def test_model_inst_created(self):
+        """A model instance is created and saved correctly"""
+        self.c.force_login(self.u)
+        data = {'lat': 34.0, 'lng': 45.3}
+        response = self.c.get(reverse(submit_point), data)
+        self.assertEqual(Point.objects.last().lat, data['lat'])
