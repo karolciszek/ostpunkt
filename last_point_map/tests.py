@@ -23,3 +23,8 @@ class RecentPointTestCase(TestCase):
         self.pt.delete()
         self.u.delete()
 
+    def test_lat_preserved(self):
+        """Lat attribute is the same when deserialised"""
+        response = get_recent_point(None)
+        fields = json.loads(response.content.decode('utf-8'))[0]['fields']
+        self.assertAlmostEqual(fields['lat'], self.pt.lat)
