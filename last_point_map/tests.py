@@ -75,9 +75,9 @@ class MapPageTestCase(TestCase):
         self.u.delete()
 
     def test_not_logged_in(self):
-        """User not logged in returns 403"""
+        """User not logged in returns 302 (Found), i.e. redirects"""
         response = self.c.get(reverse(map_page), {'lat': 34.0, 'lng': 45.3})
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 302)
 
     def test_logged_in(self):
         """User logged in returns 200"""

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseForbidden
 from django.core import serializers
 from .models import Point
@@ -6,7 +6,7 @@ from .models import Point
 # Create your views here.
 def map_page(request):
     if not request.user.is_authenticated():
-        return HttpResponseForbidden()
+        return redirect('auth_login')
 
     return render(request, 'last_point_map/map.html')
 
