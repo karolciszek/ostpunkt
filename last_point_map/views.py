@@ -10,3 +10,5 @@ def get_recent_point(request):
 def submit_point(request):
     if not request.user.is_authenticated():
         return HttpResponseForbidden()
+
+    return HttpResponse()
