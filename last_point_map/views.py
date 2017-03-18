@@ -11,4 +11,11 @@ def submit_point(request):
     if not request.user.is_authenticated():
         return HttpResponseForbidden()
 
+    point = Point(
+        lat=request.GET['lat'],
+        lng=request.GET['lng'],
+        author=request.user
+    )
+    point.save()
+
     return HttpResponse()
