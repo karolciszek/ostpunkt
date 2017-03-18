@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 import json
 from .models import Point
-from .views import get_recent_point, submit_point
+from .views import get_recent_point, submit_point, map_page
 
 User = get_user_model()
 
@@ -76,11 +76,11 @@ class MapPageTestCase(TestCase):
 
     def test_not_logged_in(self):
         """User not logged in returns 403"""
-        response = self.c.get(reverse(submit_point), {'lat': 34.0, 'lng': 45.3})
+        response = self.c.get(reverse(map_page), {'lat': 34.0, 'lng': 45.3})
         self.assertEqual(response.status_code, 403)
 
     def test_logged_in(self):
         """User logged in returns 200"""
         self.c.force_login(self.u)
-        response = self.c.get(reverse(submit_point), {'lat': 34.0, 'lng': 45.3})
+        response = self.c.get(reverse(map_page), {'lat': 34.0, 'lng': 45.3})
         self.assertEqual(response.status_code, 200)
