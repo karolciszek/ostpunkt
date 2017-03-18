@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+{% comment %}        Username: {{ form.username }}
+        Email: {{ form.email }}
+        Password: {{ form.password1 }}
+        Repeat password: {{ form.password2 }}{% endcomment %}
+        {{ form.as_p}}
+        <button type="submit">Register</button>
+    </form>
+{% endblock %}
