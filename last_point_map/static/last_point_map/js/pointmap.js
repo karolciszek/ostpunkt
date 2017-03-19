@@ -53,5 +53,9 @@ window.addEventListener('map:init', function (e) {
             location.reload();
         }
     });
+
+    $('#help-toggle').on('click', function () {
+        $('#help').toggle({duration: 250});
+    });
 }, false);
 

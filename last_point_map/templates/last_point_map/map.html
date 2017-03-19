@@ -14,11 +14,11 @@
 
     <h3>
         Hi there, {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}!
-        Click <a href="{% url 'auth_logout' %}">here</a> to log out.
+        Click <a href="#" id="help-toggle">here</a> to toggle display help, or <a href="{% url 'auth_logout' %}">here</a> to log out.
     </h3>
 
-    <p>
-        Here is a map with the most recently submitted point. Move the marker (or click to create one) and press <strong>'Save point'</strong> to submit someplace different!
+    <p id="help">
+        Here is a map with the most recently submitted point. Move the marker by dragging it or clicking on the map, and press <strong>'Save point'</strong> at the bottom of the page to submit someplace different!
     </p>
 
     <p>
@@ -26,5 +26,5 @@
     </p>
 
     {% leaflet_map "pointmap" %}
-    <button id="save_pt_button">Save point</button>
+    <h1 id="save_pt_button"><a href="#">Save point</a></h1>
 {% endblock %}
