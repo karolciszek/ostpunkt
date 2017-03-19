@@ -6,6 +6,7 @@ from .models import Point
 from .views import get_recent_point, submit_point, map_page
 
 User = get_user_model()
+data = {'lat': 34.0, 'lng': 45.3}
 
 # Create your tests here.
 class RecentPointTestCase(TestCase):
@@ -60,7 +61,6 @@ class SubmitPointTestCase(TestCase):
     def test_model_inst_created(self):
         """A model instance is created and saved correctly"""
         self.c.force_login(self.u)
-        data = {'lat': 34.0, 'lng': 45.3}
         response = self.c.get(reverse(submit_point), data)
         self.assertEqual(Point.objects.last().lat, data['lat'])
 
