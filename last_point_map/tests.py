@@ -6,7 +6,7 @@ from .models import Point
 from .views import get_recent_point, submit_point, map_page
 
 User = get_user_model()
-data = {'lat': 34.0, 'lng': 45.3}
+data = {'lat': 34.0, 'lng': 45.3, 'zoom': 13}
 
 # Create your tests here.
 class RecentPointTestCase(TestCase):
@@ -49,13 +49,13 @@ class SubmitPointTestCase(TestCase):
 
     def test_not_logged_in(self):
         """User not logged in returns 403"""
-        response = self.c.get(reverse(submit_point), {'lat': 34.0, 'lng': 45.3})
+        response = self.c.get(reverse(submit_point), {'lat': 34.0, 'lng': 45.3, 'zoom': 13})
         self.assertEqual(response.status_code, 403)
 
     def test_logged_in(self):
         """User logged in returns 200"""
         self.c.force_login(self.u)
-        response = self.c.get(reverse(submit_point), {'lat': 34.0, 'lng': 45.3})
+        response = self.c.get(reverse(submit_point), {'lat': 34.0, 'lng': 45.3, 'zoom': 13})
         self.assertEqual(response.status_code, 200)
 
     def test_model_inst_created(self):
@@ -67,7 +67,7 @@ class SubmitPointTestCase(TestCase):
     def test_same_point_not_submitted(self):
         """The same point is not submitted twice"""
         self.c.force_login(self.u)
-        data = {'lat': 34.0, 'lng': 45.3}
+        data = {'lat': 34.0, 'lng': 45.3, 'zoom': 13}
         response = self.c.get(reverse(submit_point), data)
         response = self.c.get(reverse(submit_point), data)
         response = self.c.get(reverse(submit_point), data)
