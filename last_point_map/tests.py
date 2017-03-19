@@ -84,3 +84,42 @@ class MapPageTestCase(TestCase):
         self.c.force_login(self.u)
         response = self.c.get(reverse(map_page), {'lat': 34.0, 'lng': 45.3})
         self.assertEqual(response.status_code, 200)
+
+class PointTestCase(TestCase):
+    def setUp(self):
+        credentials = {'username': 'test', 'password': 'probowanie'}
+        self.u = User(**credentials)
+        self.u.save()
+        self.a = Point(
+            lat=23.4,
+            lng=23.1,
+            author=self.u
+        )
+
+    def tearDown(self):
+        self.u.delete()
+
+    def test_equal(self):
+        """The expressiont pt == pt returns True"""
+        self.assertTrue(self.a == self.a)
+        self.assertFalse(self.a != self.a)
+
+    def test_almost_equal(self):
+        """The expression pt1 == pt2 returns True when pt1 is close to pt2"""
+        x = Point(
+            lat=23.4,
+            lng=23.1,
+            author=self.u
+        )
+        self.assertTrue(self.a == x)
+        self.assertFalse(self.a != x)
+
+    def test_not_equal(self):
+        """The expression pt1 == pt2 returns False when pt1 is not close to pt2"""
+        x = Point(
+            lat=24.4,
+            lng=23.1,
+            author=self.u
+        )
+        self.assertFalse(self.a == x)
+        self.assertTrue(self.a != x)
