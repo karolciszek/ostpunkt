@@ -26,5 +26,19 @@ window.addEventListener('map:init', function (e) {
             point_marker.addTo(map);
         }
     );
+
+    $('#save_pt_button').on('click', function () {
+        var latlng;
+        if (point_marker) {
+            latlng = point_marker.getLatLng();
+            $.getJSON('/submit',
+                      {
+                          lat: latlng.lat,
+                          lng: latlng.lng
+                      }
+                     );
+            location.reload();
+        }
+    });
 }, false);
 
