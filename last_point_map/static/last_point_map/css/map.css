@@ -1,3 +1,7 @@
+#help {
+    display: none;
+}
+
 .leaflet-container {
     min-height: 300px;
     height: 60%;
