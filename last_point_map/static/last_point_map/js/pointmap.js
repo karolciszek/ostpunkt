@@ -3,8 +3,15 @@ window.addEventListener('map:init', function (e) {
     var map = detail.map;
 
     var point_marker;
+    var marker_icon = L.icon({
+        iconUrl: icon_url,
+        iconSize: [60, 70],
+        iconAnchor: [34, 70],
+        popupAnchor: []
+    });
     var marker_settings = {
-        draggable: true
+        draggable: true,
+        icon: marker_icon
     };
 
     var default_coords = [51.0, 0.0];

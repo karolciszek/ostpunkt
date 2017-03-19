@@ -1,0 +1,5 @@
+.leaflet-container {
+    min-height: 300px;
+    height: 60%;
+    font: inherit;
+}

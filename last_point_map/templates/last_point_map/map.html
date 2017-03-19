@@ -4,6 +4,12 @@
 {% block content %}
     {% leaflet_js %}
     {% leaflet_css %}
+    <link href="{% static "last_point_map/css/map.css" %}" rel="stylesheet"/>
+    <script>
+     // Locations for pointmap.js. Is this good practice to have global vars like this?
+     var icon_url = "{% static 'last_point_map/images/marker.svg' %}";
+     var submit_url = "{% url 'get_recent_point' %}";
+    </script>
     <script src="{% static 'last_point_map/js/pointmap.js' %}"></script>
 
     <h3>
@@ -16,9 +22,7 @@
     </p>
 
     <p>
-    {% comment %}
-    Placeholder for info about last point
-    {% endcomment %}
+        The last point was submitted by <strong>{{ point.author.username }}</strong> on {{ point.set_at }}.
     </p>
 
     {% leaflet_map "pointmap" %}
