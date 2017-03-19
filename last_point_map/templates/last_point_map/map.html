@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load leaflet_tags %}
 {% block content %}
+    <script src="{% static 'last_point_map/js/pointmap.js' %}"></script>
+
     <h3>
         Hi there, {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}!
         Click <a href="{% url 'auth_logout' %}">here</a> to log out.
     </h3>
+
     <p>
         Here is a map with the most recently submitted point. Move the marker (or click to create one) and press <strong>'Save point'</strong> to submit someplace different!
     </p>
+
     <p>
     {% comment %}
     Placeholder for info about last point
     {% endcomment %}
     </p>
+
     {% leaflet_map "pointmap" %}
     <button id="save_pt_button">Save point</button>
 {% endblock %}
