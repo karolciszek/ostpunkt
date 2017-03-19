@@ -27,6 +27,10 @@ window.addEventListener('map:init', function (e) {
         }
     );
 
+    map.on('click', function (f) {
+        point_marker.setLatLng(f.latlng);
+    })
+
     $('#save_pt_button').on('click', function () {
         var latlng;
         if (point_marker) {
