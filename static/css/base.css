@@ -1,18 +1,26 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
 
+html, body {
+    height: 100%
+}
+
 body {
-    margin: 50px auto;
+    margin: auto;
     padding: 0 8px;
 
-    max-width: 50em;
+    max-width: 70em;
 
     font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
     color: #555555;
     background-color: #f3f3f3;
 }
 
+.container {
+    height: 100%;
+}
+
 a {
-    color: #6677cc;
+    color: #70c9c5;
     text-decoration: none;
 }
 
