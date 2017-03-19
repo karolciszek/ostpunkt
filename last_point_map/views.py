@@ -12,7 +12,10 @@ def map_page(request):
     if not request.user.is_authenticated():
         return redirect(MAP_UNAUTHENTICATED_REDIRECT)
 
-    return render(request, 'last_point_map/map.html')
+    context = {
+        'point': Point.objects.last()
+    }
+    return render(request, 'last_point_map/map.html', context=context)
 
 def get_recent_point(request):
     if Point.objects.count() > 0:
