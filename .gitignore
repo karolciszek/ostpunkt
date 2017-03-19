@@ -3,6 +3,7 @@ db.sqlite3
 
 # Python non-needed files
 *.pyc
+venv
 
 # JetBrains IDE
 .idea/*
