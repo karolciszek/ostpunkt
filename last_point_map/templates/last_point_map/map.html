@@ -2,6 +2,8 @@
 {% load static %}
 {% load leaflet_tags %}
 {% block content %}
+    {% leaflet_js %}
+    {% leaflet_css %}
     <script src="{% static 'last_point_map/js/pointmap.js' %}"></script>
 
     <h3>
