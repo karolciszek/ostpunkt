@@ -24,7 +24,7 @@ class Point(models.Model):
         if type(other) is type(self):
             return (isclose(float(self.lat), float(other.lat))
                     and isclose(float(self.lng), float(other.lng))
-                    and self.zoom == other.zoom)
+                    and int(self.zoom) == int(other.zoom))
         else:
             return False
 
