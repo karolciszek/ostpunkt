@@ -64,6 +64,20 @@ class SubmitPointTestCase(TestCase):
         response = self.c.get(reverse(submit_point), data)
         self.assertEqual(Point.objects.last().lat, data['lat'])
 
+    def test_same_point_not_submitted(self):
+        """The same point is not submitted twice"""
+        self.c.force_login(self.u)
+        data = {'lat': 34.0, 'lng': 45.3}
+        response = self.c.get(reverse(submit_point), data)
+        response = self.c.get(reverse(submit_point), data)
+        response = self.c.get(reverse(submit_point), data)
+        response = self.c.get(reverse(submit_point), data)
+        response = self.c.get(reverse(submit_point), data)
+        response = self.c.get(reverse(submit_point), data)
+        response = self.c.get(reverse(submit_point), data)
+        self.assertEqual(Point.objects.count(), 1)
+
+
 class MapPageTestCase(TestCase):
     def setUp(self):
         credentials = {'username': 'test', 'password': 'probowanie'}

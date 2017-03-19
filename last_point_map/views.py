@@ -15,7 +15,10 @@ def map_page(request):
     return render(request, 'last_point_map/map.html')
 
 def get_recent_point(request):
-    return HttpResponse(serializers.serialize('json', [Point.objects.last()]))
+    if Point.objects.count() > 0:
+        return HttpResponse(serializers.serialize('json', [Point.objects.last()]))
+    else:
+        return HttpResponse('[]')
 
 def submit_point(request):
     if not request.user.is_authenticated():
@@ -26,6 +29,8 @@ def submit_point(request):
         lng=request.GET['lng'],
         author=request.user
     )
-    point.save()
+
+    if point != Point.objects.last():
+        point.save()
 
     return HttpResponse()

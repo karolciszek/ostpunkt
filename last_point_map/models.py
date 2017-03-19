@@ -17,7 +17,8 @@ class Point(models.Model):
 
     def __eq__(self, other):
         if type(other) is type(self):
-            return isclose(self.lat, other.lat) and isclose(self.lng, other.lng)
+            return (isclose(float(self.lat), float(other.lat))
+                    and isclose(float(self.lng), float(other.lng)))
         else:
             return False
 
