@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>You are now logged out. Thank you for using our website! Click <a href="{% url 'auth_login' %}">here</a> to log in to another account.</h1>
+<meta http-equiv="refresh" content="5;url={% url 'map_page' %}" />
+<h1>You are now logged out. Thank you!</h1>
+<p>
+    You will be redirected to the home page in 5 seconds.
+</p>
 {% endblock %}
