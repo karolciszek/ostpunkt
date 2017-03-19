@@ -22,7 +22,7 @@
     </p>
 
     <p>
-        The last point was submitted by <strong>{{ point.author.username }}</strong> on {{ point.set_at }}.
+        The last point was submitted by <strong>{{ point.author.username }}</strong> at {{ point.set_at_readable }}.
     </p>
 
     {% leaflet_map "pointmap" %}
