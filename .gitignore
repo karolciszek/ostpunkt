@@ -8,9 +8,6 @@ venv
 # JetBrains IDE
 .idea/*
 
-# Django settings file
-settings.py
-
 # Migrations
 */migrations/*
 
