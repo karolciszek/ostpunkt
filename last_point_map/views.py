@@ -30,6 +30,7 @@ def submit_point(request):
     point = Point(
         lat=request.GET['lat'],
         lng=request.GET['lng'],
+        zoom=request.GET['zoom'],
         author=request.user
     )
 

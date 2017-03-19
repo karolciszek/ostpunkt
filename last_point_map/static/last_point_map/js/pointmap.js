@@ -28,6 +28,7 @@ window.addEventListener('map:init', function (e) {
 
             if (data && data.length > 0) {
                 create_marker([data[0].fields.lat, data[0].fields.lng]);
+                default_zoom = data[0].fields.zoom;
             } else {
                 create_marker(default_coords);
             }
@@ -47,7 +48,8 @@ window.addEventListener('map:init', function (e) {
             $.getJSON('/submit',
                       {
                           lat: latlng.lat,
-                          lng: latlng.lng
+                          lng: latlng.lng,
+                          zoom: map.getZoom()
                       }
                      );
             location.reload();
