@@ -1,4 +1,7 @@
-$(function () {
+window.addEventListener('map:init', function (e) {
+    var detail = e.detail;
+    var map = detail.map;
+
     var point_marker;
     var marker_settings = {
         draggable: true
@@ -8,15 +11,7 @@ $(function () {
     var default_zoom = 13;
 
     var create_marker = function (latlng) {
-        point_marker = L.Marker(latlng, marker_settings);
-    };
-
-    window.addEventListener('map:init', function (e) {
-        var detail = e.detail;
-    });
-
-    var load_map = function () {
-        map.map.setView(point_marker.latLng, map.default_zoom);
+        point_marker = new L.Marker(latlng, marker_settings);
     };
 
     $.getJSON(
@@ -31,4 +26,5 @@ $(function () {
             point_marker.addTo(map);
         }
     );
-});
+}, false);
+
