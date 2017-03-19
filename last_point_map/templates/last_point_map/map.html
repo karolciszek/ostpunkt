@@ -12,10 +12,10 @@
     </script>
     <script src="{% static 'last_point_map/js/pointmap.js' %}"></script>
 
-    <h3>
-        Hi there, {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}!
-        Click <a href="#" id="help-toggle">here</a> to toggle display help, or <a href="{% url 'auth_logout' %}">here</a> to log out.
-    </h3>
+    <h2>
+        Hi there{% if user.is_authenticated %}, {{ user.username }}{% endif %}!
+        Click <a href="#" id="help-toggle">here</a> to toggle display help{% if user.is_authenticated %}, or <a href="{% url 'auth_logout' %}">here</a> to log out{% endif %}.
+    </h2>
 
     <p id="help">
         Here is a map with the most recently submitted point. Move the marker by dragging it or clicking on the map, and press <strong>'Save point'</strong> at the bottom of the page to submit someplace different!
@@ -26,5 +26,5 @@
     </p>
 
     {% leaflet_map "pointmap" %}
-    <h1 id="save_pt_button"><a href="#">Save point</a></h1>
+    <h3 id="save_pt_button">{% if user.is_authenticated %}<a href="#">Save point</a>{% else %}You are not logged in. Please <a href="{% url 'auth_login' %}">login</a> or <a href="{% url 'registration_register' %}">register</a> to submit points!{% endif %}</h3>
 {% endblock %}
