@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'last_point_map',
+    'flat_responsive',
     'djgeojson',
     'jsonfield',
     'leaflet',
