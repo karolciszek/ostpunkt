@@ -26,8 +26,11 @@ window.addEventListener('map:init', function (e) {
                 point_marker.addTo(map);
             };
 
+            var point = JSON.parse(data[0].fields.point);
+            console.log(point.coordinates);
+
             if (data && data.length > 0) {
-                create_marker([data[0].fields.lat, data[0].fields.lng]);
+                create_marker(point.coordinates.reverse());
                 default_zoom = data[0].fields.zoom;
             } else {
                 create_marker(default_coords);

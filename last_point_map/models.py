@@ -1,26 +1,24 @@
 from django.db import models
 from django.conf import settings
 from math import isclose
+from djgeojson.fields import PointField
 
 # Create your models here.
 class Point(models.Model):
     lat = models.FloatField()
     lng = models.FloatField()
+    point = PointField()
     set_at = models.DateTimeField(auto_now=True)
     arrival = models.DateTimeField()
     comment = models.CharField(max_length=3000, default="No comment")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=None)
     zoom = models.IntegerField(default=10)
 
-    def set_at_readable(self):
-        return self.set_at.strftime('%H:%M:%S on %Y-%m-%d')
-
     def __str__(self):
-        return '({}, {})'.format(self.lat,
-                                                        self.lng)
-                                                        # self.set_at_readable,
-                                                        # self.author,
-                                                        # self.zoom)
+        return '{} at {}'.format(
+            self.point['coordinates'],
+            self.arrival
+        )
 
     def __eq__(self, other):
         if type(other) is type(self):

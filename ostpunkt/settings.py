@@ -33,17 +33,17 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'last_point_map',
+    'djgeojson',
+    'jsonfield',
+    'leaflet',
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'registration',
-    'leaflet',
-    'jsonfield',
-    'djgeojson',
-    'last_point_map'
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
