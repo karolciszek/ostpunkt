@@ -138,5 +138,6 @@ LOGIN_REDIRECT_URL = '/'
 
 # Leaflet settings
 LEAFLET_CONFIG = {
-    'MAX_ZOOM': 16
+    'MAX_ZOOM': 16,
+    'RESET_VIEW': False
 }

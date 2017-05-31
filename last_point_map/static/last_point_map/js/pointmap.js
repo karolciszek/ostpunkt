@@ -5,8 +5,8 @@ window.addEventListener('map:init', function (e) {
     var point_marker;
     var marker_icon = L.icon({
         iconUrl: icon_url,
-        iconSize: [60, 70],
-        iconAnchor: [34, 70],
+        iconSize: [30, 40],
+        iconAnchor: [20, 40],
         popupAnchor: []
     });
     var marker_settings = {

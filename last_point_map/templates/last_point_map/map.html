@@ -16,21 +16,29 @@
     </div>
 
     <div class="point-info-container">
-      <div class="point-info__table">
-        <div class="point-info__row">
-          <div class="point-info__col">Coordinates:</div>
-          <div class="point-info__col">{{ point.point.coordinates }}</div>
+        <div class="point-info point-properties-container">
+            <h1 class="header point-properties__header">
+                Information
+            </h1>
+            <div class="point-properties__table">
+                <div class="point-properties__row">
+                    <div class="point-properties__col">Check-in time:</div>
+                    <div class="point-properties__col"><strong>{{ point.arrival }} (UK time)</strong></div>
+                </div>
+                <div class="point-properties__row">
+                    <div class="point-properties__col">Coordinates:</div>
+                    <div class="point-properties__col">{{ point.coords_to_str }}</div>
+                </div>
+            </div>
         </div>
-        <div class="point-info__row">
-          <div class="point-info__col">Check-in time:</div>
-          <div class="point-info__col">{{ point.arrival }} (UK time)</div>
-        </div>
-      </div>
-    </div>
 
-    <div class="point-comment">
-      <p>
-        {{ point.comment }}
-      </p>
+        <div class="point-info point-comment">
+            <h1 class="header point-comment__header">
+                Description
+            </h1>
+            <div class="point-comment__text">
+                {{ point.description | linebreaks }}
+            </div>
+        </div>
     </div>
-{% endblock %}
+    {% endblock %}

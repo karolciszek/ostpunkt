@@ -1,7 +1,7 @@
-@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
+@import 'https://fonts.googleapis.com/css?family=Open Sans:300,400,500';
+/* Basic definitons */
 
 html, body {
-    height: 95%;
 }
 
 body {
@@ -10,19 +10,33 @@ body {
 
     max-width: 70em;
 
-    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-family: "Open Sans", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
     color: #555555;
-    background-color: #f3f3f3;
+    background-color: #fff;
+    font-weight: 300;
 }
 
-a {
-    color: #70c9c5;
-    text-decoration: none;
+strong {
+    color: #333;
 }
 
-a:hover {
-    color: #397d79;
+/* Site-wide definitions */
+.header {
+    color: #e64c00;
+    /* color: #286C3E; */
+    text-shadow: 1px 1px 3px rgba(0.5, 0.5, 0.5, 0.10);
+    margin: 25px 0 10px;
+    font-size: 26px;
+    font-weight: 500;
 }
+
+@media screen and (max-width: 1000px) {
+    .header {
+        margin-top: 15px;
+    }
+}
+
+/* Map */
 
 #pointmap {
     height: 500px;
@@ -35,12 +49,8 @@ a:hover {
     }
 }
 
-strong {
-    color: #333;
-}
-
+/* Footer */
 footer {
-    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -53,18 +63,45 @@ footer {
     float: right;
 }
 
-/* Info table */
-.point-info__table {
+/* Information */
+.point-info-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.point-info {
+    flex-grow: 1;
+    min-width: 0;
+    max-width: 480px;
+}
+
+.point-properties__header {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 1000px) {
+    .point-properties__header {
+        margin-bottom: 5px;
+    }
+}
+
+.point-properties__table {
     display: table;
-    border-spacing: 30px 0;
+    border-spacing: 30px 16px;
     margin-left: -30px;
 }
 
-.point-info__row {
+.point-properties__row {
     display: table-row;
     margin-right: 20px;
 }
 
-.point-info__col {
+.point-properties__col {
     display: table-cell;
+}
+
+.point-comment__text {
+    max-width: 500px;
 }
