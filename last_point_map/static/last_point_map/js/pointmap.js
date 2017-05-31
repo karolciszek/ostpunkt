@@ -10,7 +10,7 @@ window.addEventListener('map:init', function (e) {
         popupAnchor: []
     });
     var marker_settings = {
-        draggable: true,
+        draggable: false,
         icon: marker_icon
     };
 
@@ -36,28 +36,5 @@ window.addEventListener('map:init', function (e) {
             map.setView(point_marker.getLatLng(), default_zoom);
         }
     );
-
-    map.on('click', function (f) {
-        point_marker.setLatLng(f.latlng);
-    })
-
-    $('#save_pt_button').on('click', function () {
-        var latlng;
-        if (point_marker) {
-            latlng = point_marker.getLatLng();
-            $.getJSON('/submit',
-                      {
-                          lat: latlng.lat,
-                          lng: latlng.lng,
-                          zoom: map.getZoom()
-                      }
-                     );
-            location.reload();
-        }
-    });
-
-    $('#help-toggle').on('click', function () {
-        $('#help').toggle({duration: 250});
-    });
 }, false);
 
