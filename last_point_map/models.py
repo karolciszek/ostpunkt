@@ -7,6 +7,8 @@ class Point(models.Model):
     lat = models.FloatField()
     lng = models.FloatField()
     set_at = models.DateTimeField(auto_now=True)
+    arrival = models.DateTimeField()
+    comment = models.CharField(max_length=3000, default="No comment")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=None)
     zoom = models.IntegerField(default=10)
 
@@ -14,11 +16,11 @@ class Point(models.Model):
         return self.set_at.strftime('%H:%M:%S on %Y-%m-%d')
 
     def __str__(self):
-        return '[({}, {}) at {} by {}, zoom {}]'.format(self.lat,
-                                                        self.lng,
-                                                        self.set_at_readable,
-                                                        self.author,
-                                                        self.zoom)
+        return '({}, {})'.format(self.lat,
+                                                        self.lng)
+                                                        # self.set_at_readable,
+                                                        # self.author,
+                                                        # self.zoom)
 
     def __eq__(self, other):
         if type(other) is type(self):
