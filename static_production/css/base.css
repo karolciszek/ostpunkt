@@ -15,10 +15,6 @@ body {
     background-color: #f3f3f3;
 }
 
-.container {
-    height: 90%;
-}
-
 a {
     color: #70c9c5;
     text-decoration: none;
@@ -26,6 +22,17 @@ a {
 
 a:hover {
     color: #397d79;
+}
+
+#pointmap {
+    height: 500px;
+}
+
+@media screen and (max-width: 1000px) {
+    #pointmap {
+        height: 400px;
+        margin: 0 -8px;
+    }
 }
 
 strong {
@@ -44,4 +51,20 @@ footer {
 
 .footer-right {
     float: right;
+}
+
+/* Info table */
+.point-info__table {
+    display: table;
+    border-spacing: 30px 0;
+    margin-left: -30px;
+}
+
+.point-info__row {
+    display: table-row;
+    margin-right: 20px;
+}
+
+.point-info__col {
+    display: table-cell;
 }

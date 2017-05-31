@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'registration',
     'leaflet',
+    'jsonfield',
+    'djgeojson',
     'last_point_map'
 ]
 
