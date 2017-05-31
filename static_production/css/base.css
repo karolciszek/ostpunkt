@@ -1,12 +1,10 @@
 @import 'https://fonts.googleapis.com/css?family=Open Sans:300,400,500';
 /* Basic definitons */
 
-html, body {
-}
 
 body {
     margin: auto;
-    padding: 0 8px;
+    padding: 8px 8px 0;
 
     max-width: 70em;
 
@@ -14,6 +12,12 @@ body {
     color: #555555;
     background-color: #fff;
     font-weight: 300;
+}
+
+@media screen and (max-width: 1000px) {
+    body {
+        padding-top: 0;
+    }
 }
 
 strong {
